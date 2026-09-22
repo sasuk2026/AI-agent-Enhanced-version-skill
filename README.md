@@ -47,4 +47,4 @@ skills/<skill-name>/
 
 ## 许可
 
-请参阅各 Skill 目录内的 LICENSE（如有）。整体仓库授权方式见仓库 LICENSE 文件。
+本项目基于 **MIT License** 开源（见 [LICENSE](LICENSE)）。各 Skill 目录内如另有 LICENSE，以该目录为准。
