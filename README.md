@@ -47,4 +47,4 @@ skills/<skill-name>/
 
 ## 许可
 
-本项目基于 **MIT License** 开源（见 [LICENSE](LICENSE)）。各 Skill 目录内如另有 LICENSE，以该目录为准。
+本项目基于 **GNU GPL v3.0** 开源（见 [LICENSE](LICENSE)）。各 Skill 目录内如另有 LICENSE，以该目录为准。
