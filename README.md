@@ -1,74 +1,50 @@
 # AI agent Enhanced version skill
 
-> 增强版自动数据分类 Agent 技能（Enhanced Auto Data Classifier Agent Skill）
+> 🧩 通用 AI Agent 技能集合仓库 —— 收纳、增强并持续沉淀各类 Agent Skills
 
-## 关于我
+## 关于本仓库
 
-你好，我是 **auto-data-classifier-enhanced** —— 一个把 AI Agent 变成「自动数据分类专家」的增强版技能。我不只是简单打标签，而是构建了一套从训练到持续迭代的完整闭环。
+欢迎！这里是一个**面向 AI Agent 的技能集合仓库**，用来收纳、整理、增强各种可复用的 Agent Skills。每个 Skill 都是一个独立的能力包，放在 `skills/` 目录下，可直接部署到支持 AgentSkills 规范的平台使用。
 
-### 我擅长什么
+我**不只专注自动数据分类**——凡是能让 Agent 变强的能力，都在收集之列：数据、文本、图像、Web、办公、代码、研究……持续扩充中。
 
-给定一份带标签的数据，我能自动完成**特征工程、模型选择与集成**，产出可复用的分类管线；对未标注数据预测时，我会给出「**标签 + 置信度**」，低置信度的样本自动进入人工复核队列；人工校正的结果可以回流重训，让我越用越准。
+## 收录的技能（skills/）
 
-### 我的四大增强能力
+| Skill | 目录 | 能力简介 | 状态 |
+|-------|------|----------|------|
+| 🧬 增强版自动数据分类 | `skills/auto-data-classifier-enhanced/` | 自动特征工程 + 模型优选 + 多模型集成投票 + 置信度/人工复核 + 反馈自迭代，覆盖 text/tabular/files/image 四类数据 | ✅ 已收录 |
 
-| 能力 | 说明 |
-|------|------|
-| 🧬 自动特征工程 + 模型优选 | 按数据类型自动选择特征方案，多候选模型交叉验证排名挑最优 |
-| 🗳️ 多模型集成投票 | 前 K 个模型组成 soft Voting 集成，降低单模型误判 |
-| 🎯 置信度 + 人工回路 | 低置信预测不裸奔，自动导出复核队列交人工把关 |
-| 🔁 自动反馈自迭代 | 人工校正回流训练集，重新优选 + 集成，越用越准 |
+> 持续收录中：欢迎贡献或提出你需要的技能方向。
 
-### 我支持的数据类型
+## Skill 规范
 
-- **text** —— 文本 / 文档分类（邮件、工单、日志等）
-- **tabular** —— 结构化表格分类
-- **files** —— 混合文件归类整理
-- **image** —— 图片内容分类
-
-## 快速开始
-
-```bash
-# 1. 训练（带标签数据）
-python3 scripts/classify_cli.py train \
-  --data data.csv --type text --label-col label \
-  --out artifacts
-
-# 2. 预测（未标注数据，自动导出复核队列）
-python3 scripts/classify_cli.py predict \
-  --data new_data.csv --type text --out artifacts
-
-# 3. 反馈回流（人工校正后重训，持续变准）
-python3 scripts/classify_cli.py retrain \
-  --feedback reviewed.csv --out artifacts
-```
-
-## 仓库结构
+每个 Skill 遵循标准的 AgentSkills 结构：
 
 ```
-.
-├── SKILL.md                     # 技能主文件（能力说明与使用流程）
-├── assets/
-│   └── config_template.yaml     # 配置模板
-├── references/
-│   ├── workflows.md             # 工作流说明
-│   └── data_adapters.md         # 数据适配器说明
-└── scripts/
-    ├── classify_cli.py          # 命令行入口（train/predict/retrain）
-    ├── features.py              # 特征工程
-    ├── models.py                # 模型优选与集成
-    ├── review.py                # 复核队列
-    └── dataio.py                # 数据读写
+skills/<skill-name>/
+├── SKILL.md                    # 技能主文件（name + description + 使用流程）
+├── assets/                     # 配置文件、静态资源
+├── references/                 # 参考文档、数据适配说明
+└── scripts/                    # 可执行脚本（命令入口、核心逻辑）
 ```
+
+## 如何新增一个 Skill
+
+1. 在 `skills/` 下新建目录，按上述规范组织文件；
+2. 编写 `SKILL.md`（frontmatter 含 `name` 与 `description`，正文说明触发条件与工作流）；
+3. 提交 Pull Request，或在 Issue 中提出你想要的能力方向。
+
+## 目标
+
+打造一个**不断生长的 Agent 能力工具箱**——沉淀一个，增强一个，复用一处，处处可用。
 
 ## 使用场景
 
-- 「把这批邮件/工单/日志按主题分类」
-- 「用这份 CSV 训练一个分类器，新数据自动打标签」
-- 「把这些文件按项目/类型整理归类」
-- 「图片按内容分类」
-- 任何需要「自动分类 + 可信度评估 + 可人工校正 + 持续迭代」的场景。
+- 数据分类、打标签、批量归类
+- 文本 / 文档处理与洞察
+- 文件整理、图片分类
+- 更多能力持续加入……
 
 ## 许可
 
-请参阅仓库内的 LICENSE（如有）或联系作者获取授权信息。
+请参阅各 Skill 目录内的 LICENSE（如有）。整体仓库授权方式见仓库 LICENSE 文件。
