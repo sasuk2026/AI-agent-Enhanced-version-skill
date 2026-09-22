@@ -54,6 +54,17 @@ python3 scripts/fetch_cli.py crawl --url <URL> --config assets/config_template.y
 `all`(默认) · `text`(正文) · `links`(链接) · `images`(图片) · `tables`(表格) ·
 `metadata`(元信息) · `assets`(CSS/JS/文档) · `custom`(选择器)
 
+## 使用到的权限
+
+本 skill 在运行时会访问并使用以下权限/资源：
+
+- **出站网络访问**：向目标站点发起 HTTP 请求（requests / GM_xmlhttpRequest / fetch），
+  读取页面、robots.txt，跟进重定向。**只对用户明确指定的 URL 发起请求**。
+- **动态渲染（可选）**：`--render` 时会用 Playwright 启动真实浏览器内核执行页面 JS，需浏览器二进制；默认关闭。
+- **本地文件读写**：`--out` 导出 JSON / Markdown / CSV 抓取结果到指定路径。
+- **Python 运行时与依赖包**：需 `requests`、`beautifulsoup4`、`lxml`；增强（缺失则降级）`trafilatura`、`playwright`、`pyyaml`、`markdownify`。
+- **不涉及**：不访问本机文件系统上非指定的文件，不读取目标站登录态/凭证，不主动收集个人信息。
+
 ## 安全要点（务必遵守）
 
 - **SSRF 是第一道闸门**：任何解析到内网/云元数据（如 `169.254.169.254`）的 URL 都会被拦，含重定向跳转后的目标。

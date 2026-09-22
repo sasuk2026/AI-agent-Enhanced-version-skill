@@ -60,6 +60,16 @@ python3 scripts/classify_cli.py retrain \
 > 细节见 `references/workflows.md`；各数据类型特征方案见 `references/data_adapters.md`；
 > 可调参数见 `assets/config_template.yaml`。
 
+## 使用到的权限
+
+本 skill 在运行时会访问并使用以下权限/资源：
+
+- **本地文件读写**：读取训练/预测数据（CSV / JSONL / Excel / 文本 / 图片 / 目录下的文件），
+  并在 `--out` 指定目录写入产物（`pipeline.joblib`、`report.json`、`REPORT.md`、`predictions.csv`、`review_queue.csv`）。
+- **命令行执行**：调用 `python3 scripts/classify_cli.py` 及其子命令（train / predict / retrain）。
+- **Python 运行时与依赖包**：需 `scikit-learn`、`pandas`、`joblib`；按数据类型可能额外需要 `Pillow`（图片）、`openpyxl`（Excel）、`pyyaml`（配置）。
+- **不涉及**：不访问网络，不收集或外传数据，不触碰用户数据文件以外的内容。
+
 ## 执行要点（Agent 应遵守）
 
 - **先确认数据类型与标签列**：训练必须指定 `--type` 与 `--label_col`；`files`/`image` 的数据文件
