@@ -1,0 +1,11 @@
+# 增强版网站资源抓取 - 配置模板
+# 复制为 config.yaml 并按需修改，运行时用 --config 传入
+
+fetcher:
+  timeout: 15            # 单次请求超时（秒）
+  delay: 1.0             # 请求间隔（秒）—— 礼貌抓取，避免压垮目标站
+  max_retries: 3         # 失败重试次数（指数退避：1s/2s/4s…）
+  verify_ssl: true       # 是否校验 SSL 证书
+  obey_robots: true      # 是否遵守 robots.txt（Disallow + Crawl-delay）
+  user_agent: "Mozilla/5.0 (compatible; WebScraperEnhanced/1.0; +https://example.com/bot)"
+  allow_private: false   # 是否允许抓取内网/私有地址。默认 false（SSRF 防护，切勿随意开启）

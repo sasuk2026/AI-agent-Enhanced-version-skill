@@ -13,6 +13,7 @@
 | Skill | 目录 | 能力简介 | 状态 |
 |-------|------|----------|------|
 | 🧬 增强版自动数据分类 | `skills/auto-data-classifier-enhanced/` | 自动特征工程 + 模型优选 + 多模型集成投票 + 置信度/人工复核 + 反馈自迭代，覆盖 text/tabular/files/image 四类数据 | ✅ 已收录 |
+| 🕷️ 增强版网站抓取 | `skills/web-scraper-enhanced/` | 抓取网页/整站内容，CSS 选择器精准抽取，SSRF 防护 + robots.txt 遵守 + 礼貌限速 + 智能正文提取 + 动态渲染 + 多格式导出 | ✅ 已收录 |
 
 > 持续收录中：欢迎贡献或提出你需要的技能方向。
 
