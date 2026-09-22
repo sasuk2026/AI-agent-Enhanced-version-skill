@@ -1,0 +1,26 @@
+# 增强版自动数据分类 · 配置模板
+# 复制本文件按需修改，用 `train --config your_config.yaml` 传入。
+# 所有字段均可省略，省略即使用默认值。
+
+# 数据类型：text | tabular | files | image
+data_type: text
+
+model:
+  cv: 5                 # 交叉验证折数
+  scoring: f1_macro     # 自动优选指标（f1_macro / accuracy / roc_auc_ovr 等）
+  top_k: 3              # 集成投票取前 K 个模型
+
+# 文本特征工程（仅 text 生效）
+text:
+  max_features: 20000
+  ngram_range: [1, 2]
+  min_df: 2
+  svd_dims: 300
+
+# 文件特征工程（仅 files 生效）
+files:
+  text_ext: [".txt", ".md", ".csv", ".json", ".log", ".py", ".html"]
+
+# 预测阶段
+predict:
+  threshold: 0.6        # 置信度低于此值进入人工复核队列
